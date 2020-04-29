@@ -42,7 +42,7 @@
 8.	Using IS NOT NULL, ORDER BY, & LIMIT, what country has the lowest population?
 
   SELECT Code, Name, Population FROM country
-  WHERE Population IS NOT NULL
+  WHERE Population IS NOT NULL AND Population != 0
   ORDER BY Population ASC
   LIMIT 1;
 
@@ -71,6 +71,7 @@
 13.	List the top ten countries which have the smallest population-to-area ratio.
 
   SELECT Name, Population, SurfaceArea, (Population/SurfaceArea) * 100 AS PopToAreaRatio FROM country
+  WHERE Population IS NOT NULL AND Population != 0
   ORDER BY PopToAreaRatio
   LIMIT 10;
 
