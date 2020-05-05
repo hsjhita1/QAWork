@@ -23,12 +23,22 @@ def tenFunc(num) :
 
 def hundredFunc(num):
     word = ''
-    ten = tenFunc(num[1:])
+    ten = ''    
     hundred = hundredsList[int(num[0])]
-    word = hundred + " Hundred " + ten
-    if num[1] == 0:
-        digit = singleDigit[int(num[2])]
-        word = hundred + " Hundred " +  digit
+    if num[1] == '0':
+        if num[0] == 0:
+            digit = singleDigit[int(num[2])]
+            word = digit
+        else:
+            digit = singleDigit[int(num[2])]
+            word = hundred + " Hundred " + digit
+    else:
+        if num[0] == 0:
+            ten = tenFunc(num[1:])
+            word = ten
+        else:
+            ten = tenFunc(num[1:])
+            word = hundred + " Hundred " + ten
     return word
     
 def thousandFunc(num):
