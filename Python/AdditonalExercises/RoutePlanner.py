@@ -14,9 +14,8 @@ def findRoute(peaks):
     for i in range(len(routeList)):
         if i == 0:
             route.append(routeList[i])
-        elif routeList[i] == route[i-1]:
+        elif routeList[i] not in (route):
             route.append(routeList[i])
-            continue
     return route
 
 print(findRoute(peakList))
