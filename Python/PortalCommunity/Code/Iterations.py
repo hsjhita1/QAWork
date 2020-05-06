@@ -1,23 +1,27 @@
 ## While loop
-
-number = 0
-while number < 5:
-    print(number)
-    number += 1
+def whileLoop(number):
+    while number < 5:
+        print(number)
+        number += 1
+    return number
 
 ## For loop
-for i in range(51): ## Will print from 0 - 50
-    print(i)
+def forLoop(num):
+    for i in range(51): ## Will print from 0 - 50
+        print(i)
+    return i
 
 animals = ["cow", "pig", "duck"] ## Can also print lists
 for animal in animals:
     print(animal)
 
 ## Breaking a loop
-for i in range(101):
-    print(i)
-    if i == 20:
-        break ## Once i = 20, the loop will break
+def breakLoop(i):
+    for i in range(101):
+        print(i)
+        if i == 20:
+            break ## Once i = 20, the loop will break
+    return i
 
 ## Nested loops
 for i in range(3): ## Will increment once for loop below has been done

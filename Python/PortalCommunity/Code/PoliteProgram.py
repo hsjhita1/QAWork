@@ -1,3 +1,4 @@
-firstName = input("Enter your first name: ")
-lastName = input("Enter your last name: ")
-print("Hello " + firstName + " " + lastName)
+def polite(firstName, lastName):
+    str = "Hello " + firstName + " " + lastName
+    print(str)
+    return str

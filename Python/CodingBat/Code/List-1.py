@@ -59,7 +59,7 @@ print(middle_way([1, 2, 3], [4, 5, 6]))
 def make_ends(nums):# Returns an array with the first and last number
   return [nums[0], nums[-1]]
 print("\nmake_ends")
-print(make_ends([7, 4, 6, 2]) → [7, 2])
+print(make_ends([7, 4, 6, 2]))
 
 def has23(nums): # Checks if an array has 2 or 3
   for i in range(len(nums)):
