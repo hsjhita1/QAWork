@@ -1,18 +1,14 @@
 {% extends "layout.html" %}
 {% block body_content %}
 	<h1>{{ title }}</h1>
-		<div>
-			<h3>{{ post.title }}</h3>
-			<p>{{ post.first_name }} {{ post.last_name }}</p>
-			<p> -- {{ post.content }}</p>
-		</div>
 
+	{% for post in posts %}
+	<div>
+		<h2>{{ post.title }}</h2>
+		<p><b> -First name: </b>{{ post.first_name }}</p>
+		<p><b> -Last name: </b>{{ post.last_name }}</p>
+		<p> -- {{ post.content }}</p>
+	</div>
+	{% endfor %}
 
 {% endblock %}
-
-
-
-
-
-
-
