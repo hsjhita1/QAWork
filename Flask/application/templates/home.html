@@ -5,12 +5,15 @@
 	{% if posts %}
 		{% for post in posts %}
 		<div>
+			<p>----------------------------------------------------------------</p>
 			<h2>{{ post.title }}</h2>
-			<p><b> -First name: </b>{{ post.first_name }}</p>
-			<p><b> -Last name: </b>{{ post.last_name }}</p>
+			<p><b> -First name: </b>{{ post.author.first_name }}</p>
+			<p><b> -Last name: </b>{{ post.author.last_name }}</p>
+			<p>{{ post.date_posted }}</p>
 			<p> -- {{ post.content }}</p>
 		</div>
 		{% endfor %}
+		<p>----------------------------------------------------------------</p>
 		<a href="{{ url_for('post') }}">Click here to add a post!!</a>
 	{% else %}
 		<p>There are no posts.</p>

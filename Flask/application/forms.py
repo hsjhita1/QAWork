@@ -2,21 +2,10 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
+from flask_login import current_user
 
 class PostForm(FlaskForm):
-    first_name = StringField("First Name",
-        validators = [
-            DataRequired(),
-            Length(min = 2, max = 30)
-        ]
-    )
 
-    last_name = StringField("Last Name",
-        validators = [
-            DataRequired(),
-            Length(min = 2, max = 30)
-        ]
-    )
 
     title = StringField("Title",
         validators = [
@@ -35,6 +24,20 @@ class PostForm(FlaskForm):
     submit = SubmitField('Submit Content')
 
 class RegistrationForm(FlaskForm):
+    first_name = StringField("First Name",
+        validators = [
+            DataRequired(),
+            Length(min = 2, max = 30)
+        ]
+    )
+
+    last_name = StringField("Last Name",
+        validators = [
+            DataRequired(),
+            Length(min = 2, max = 30)
+        ]
+    )
+
     email = StringField('Email',
         validators = [
             DataRequired(),
@@ -75,3 +78,28 @@ class LoginForm(FlaskForm):
 
     remember = BooleanField('Remeber me')
     submit = SubmitField('Login')
+
+
+class UpdateAccountForm(FlaskForm):
+    first_name = StringField('First Name',
+        validators=[
+            DataRequired(),
+            Length(min=4, max=30)
+        ])
+    last_name = StringField('Last Name',
+        validators=[
+            DataRequired(),
+            Length(min=4, max=30)
+        ])
+    email = StringField('Email',
+        validators=[
+            DataRequired(),
+            Email()
+        ])
+    submit = SubmitField('Update')
+
+    def validate_email(self,email):
+        if email.data != current_user.email:
+            user = Users.query.filter_by(email=email.data).first()
+            if user:
+                raise ValidationError('Email already in use')
